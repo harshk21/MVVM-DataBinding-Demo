@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MVVMDataBindingDemo</string>
+    <string name="name">Name:</string>
+    <string name="email">Email:</string>
+    <string name="address">Address:</string>
+    <string name="username">Username:</string>
+    <string name="phone">Phone:</string>
+    <string name="website">Website:</string>
+</resources>
