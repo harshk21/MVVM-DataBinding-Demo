@@ -4,6 +4,7 @@ package com.example.mvvm_data_binding_demo.ui
 import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -16,16 +17,17 @@ import com.example.mvvm_data_binding_demo.databinding.ActivityMainBinding
 
 class UsersMainActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var mViewModel: UsersViewModel
-    private lateinit var usersList: ArrayList<Users>
+    private val binding: ActivityMainBinding by lazy{
+        DataBindingUtil.setContentView(this, R.layout.activity_main)
+    }
+    private  val mViewModel: UsersViewModel by viewModels()
+    private val usersList: ArrayList<Users> by lazy{
+        ArrayList()
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        mViewModel = ViewModelProvider(this)[UsersViewModel::class.java]
-        usersList = ArrayList()
         binding.myViewModel = mViewModel
         mViewModel.getUsers()
         attachObserver()

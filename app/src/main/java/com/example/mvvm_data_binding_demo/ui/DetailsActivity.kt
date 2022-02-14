@@ -1,6 +1,7 @@
 package com.example.mvvm_data_binding_demo.ui
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -12,12 +13,13 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 
 class DetailsActivity : AppCompatActivity() {
-    private lateinit var detailsBinding: ActivityDetailsBinding
-    private lateinit var mViewModel: UsersViewModel
+    private val detailsBinding: ActivityDetailsBinding by lazy{
+        DataBindingUtil.setContentView(this, R.layout.activity_details)
+    }
+    private val mViewModel: UsersViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        detailsBinding = DataBindingUtil.setContentView(this, R.layout.activity_details)
-        mViewModel = ViewModelProvider(this)[UsersViewModel::class.java]
         detailsBinding.detailViewModel = mViewModel
         detailsBinding.lifecycleOwner = this
     }
