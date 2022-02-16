@@ -5,14 +5,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.mvvm_data_binding_demo.data.Users
+import com.example.mvvm_data_binding_demo.data.ProductsItem
 
 @Dao
 interface UserDao {
-    @Query("SELECT * FROM users")
-    fun getAll(): LiveData<List<Users>>
+    @Query("SELECT * FROM productsitem")
+    fun getAll(): LiveData<List<ProductsItem>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(usersList: Users)
+    fun insertAll(usersList: ProductsItem)
 }
 

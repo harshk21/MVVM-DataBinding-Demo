@@ -5,12 +5,13 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mvvm_data_binding_demo.data.Users
+import com.example.mvvm_data_binding_demo.data.ProductsItem
 import com.example.mvvm_data_binding_demo.databinding.MainUserItemBinding
 import com.example.mvvm_data_binding_demo.ui.DetailsActivity
+import com.example.mvvm_data_binding_demo.utils.bindSrcUrl
 import org.greenrobot.eventbus.EventBus
 
-class UsersAdapter(private val context: Context, private val allUsers: List<Users>) :
+class UsersAdapter(private val context: Context, private val allUsers: List<ProductsItem>) :
     RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
     lateinit var listItemBinding: MainUserItemBinding
 
@@ -31,7 +32,8 @@ class UsersAdapter(private val context: Context, private val allUsers: List<User
 
     inner class MyViewHolder(binding: MainUserItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Users, context: Context) {
+        fun bind(item: ProductsItem, context: Context) {
+            listItemBinding.ivProduct.bindSrcUrl(item.image)
             listItemBinding.listItemUser = item
             listItemBinding.root.setOnClickListener {
                 EventBus.getDefault().postSticky(item)
@@ -39,6 +41,4 @@ class UsersAdapter(private val context: Context, private val allUsers: List<User
             }
         }
     }
-
-
 }

@@ -20,7 +20,7 @@
             android:name=".ui.DetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.UsersMainActivity"
+            android:name=".ui.activities.UsersMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

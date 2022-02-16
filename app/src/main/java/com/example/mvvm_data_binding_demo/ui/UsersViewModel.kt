@@ -3,19 +3,19 @@ package com.example.mvvm_data_binding_demo.ui
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mvvm_data_binding_demo.application.MyApplication
-import com.example.mvvm_data_binding_demo.data.Users
-import com.example.mvvm_data_binding_demo.repository.UsersRepo
+import com.example.mvvm_data_binding_demo.data.ProductsItem
+import com.example.mvvm_data_binding_demo.repository.ProductsItemRepo
 import com.example.mvvm_data_binding_demo.viewmodel.BaseViewModel
 
 class UsersViewModel : BaseViewModel() {
 
-    var userDataResponse = MutableLiveData<List<Users>>()
-    var itemPerUser = MutableLiveData<Users>()
+    var userDataResponse = MutableLiveData<ArrayList<ProductsItem>>()
+    var itemPerUser = MutableLiveData<ProductsItem>()
     private val dao = MyApplication.roomDatabase?.userDao()
 
     fun getUsers() {
         isLoading.value = true
-        UsersRepo.getUsersList(
+        ProductsItemRepo.getProductsItemList(
             success = {
                 isLoading.value = false
                 userDataResponse.value = it
@@ -29,12 +29,12 @@ class UsersViewModel : BaseViewModel() {
             })
     }
 
-    fun setSingleUser(item: Users) {
+    fun setSingleUser(item: ProductsItem) {
         isLoading.value = true
         itemPerUser.value = item
     }
 
-    fun getUsersDataBase(): LiveData<List<Users>>? {
+    fun getUsersDataBase(): LiveData<List<ProductsItem>>? {
         return dao?.getAll()
     }
 

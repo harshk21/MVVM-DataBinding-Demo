@@ -7,7 +7,7 @@
 
         <variable
             name="listItemUser"
-            type="com.example.mvvm_data_binding_demo.data.Users" />
+            type="com.example.mvvm_data_binding_demo.data.ProductsItem" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,53 +17,49 @@
         android:padding="@dimen/_16sdp"
         tools:context=".ui.listItemUserMainActivity">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{listItemUser.id}"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="@dimen/_88sdp"
+            android:layout_height="@dimen/_88sdp"
+            android:elevation="10dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_product"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:src="@color/cardview_dark_background" />
+
+        </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:textStyle="bold"
             android:layout_height="wrap_content"
-            android:text="@{listItemUser.name}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_id" />
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:text="@{listItemUser.title}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintTop_toTopOf="@+id/cardView" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_email"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{listItemUser.email}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{listItemUser.phone}"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_email" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{listItemUser.username}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_website"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{listItemUser.website}"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_username" />
+            android:layout_marginHorizontal="@dimen/_12sdp"
+            android:text="@{listItemUser.description}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/_7sdp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:layout_constraintVertical_bias="0.07999998"
+            tools:text="Harsh" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

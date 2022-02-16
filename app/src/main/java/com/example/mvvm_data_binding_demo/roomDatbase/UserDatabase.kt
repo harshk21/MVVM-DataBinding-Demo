@@ -4,10 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.mvvm_data_binding_demo.data.Users
+import com.example.mvvm_data_binding_demo.data.ProductsItem
 import com.example.mvvm_data_binding_demo.utils.Constants
 
-@Database(entities = [Users::class], version = 1, exportSchema = false)
+@Database(entities = [ProductsItem::class], version = 1, exportSchema = false)
 abstract class UserDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
 
